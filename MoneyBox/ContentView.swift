@@ -73,9 +73,6 @@ struct TransactionSeparator: View {
     
     var body: some View {
         HStack {
-            Rectangle()
-                .frame(width: 260, height: 2)
-                .foregroundColor(Color("text"))
             Text(title)
                 .font(.system(
                     size: 18,
@@ -83,6 +80,9 @@ struct TransactionSeparator: View {
                 ))
                 .foregroundColor(Color("textExtend"))
             Spacer()
+            Rectangle()
+                .frame(width: 260, height: 2)
+                .foregroundColor(Color("text"))
         }
     }
 }
@@ -103,12 +103,25 @@ struct TransactionElement: View, Identifiable {
                 .frame(width: 48, height: 48)
                 .cornerRadius(15)
                 .foregroundColor(Color("transactionBox"))
-            VStack(alignment: .leading) {
-                Text("\(amount)$").foregroundColor(Color("text"))
+            VStack(alignment: .leading, spacing: 4) {
                 Text(category)
                     .foregroundColor(Color("textExtend"))
+                HStack {
+                    ZStack{
+                        Circle().frame(width: 14)
+                        Circle().frame(width: 6).foregroundColor(Color("background"))
+                    }
+                    ZStack{
+                        Circle().frame(width: 14)
+                        Circle().frame(width: 6).foregroundColor(Color("background"))
+                    }
+                }
             }
             Spacer()
+            Text("\(amount)$").foregroundColor(Color("text")).font(.system(
+                size: 18,
+                weight: .bold
+            ))
         }
     }
 }
@@ -139,7 +152,7 @@ let transactionCollection: [TransactionDay] = [
         ]
     ),
     .init(
-        uuid: "213-3oif3",
+        uuid: "213-3oi3",
         separator: TransactionSeparator.init(title: "03 April", theme: "Good"),
         transactionsCollection: [
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
