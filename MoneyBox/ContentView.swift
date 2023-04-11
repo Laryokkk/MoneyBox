@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            headingComponent
-            transactionsComponent
-            Spacer()
-        }.padding(24)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                headingComponent
+                transactionsComponent
+                Spacer()
+            }.padding(24)
+        }
     }
 }
 
@@ -128,6 +130,19 @@ let transactionCollection: [TransactionDay] = [
         uuid: "213-3oif3",
         separator: TransactionSeparator.init(title: "04 April", theme: "Good"),
         transactionsCollection: [
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
+        ]
+    ),
+    .init(
+        uuid: "213-3oif3",
+        separator: TransactionSeparator.init(title: "03 April", theme: "Good"),
+        transactionsCollection: [
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
