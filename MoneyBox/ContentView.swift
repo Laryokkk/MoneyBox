@@ -14,8 +14,8 @@ struct ContentView: View {
                 headingComponent
                 transactionsComponent
                 Spacer()
-            }.padding(24)
-        }
+            }.padding([.leading, .trailing], 24)
+        }.background(Color("background"))
     }
 }
 
@@ -27,16 +27,17 @@ var headingComponent: some View {
 
 var balanceComponent: some View {
     HStack {
-        VStack {
-            Text("172,20$").font(.system(size: 32, weight: .bold))
-            Text("363,20$").font(.system(size: 20, weight: .regular))
-            Text("120,00$").font(.system(size: 20, weight: .regular))
+        VStack(alignment: .leading) {
+            Text("172,20$").font(.system(size: 32, weight: .bold)).foregroundColor(Color("text"))
+            Text("363,20$").font(.system(size: 20, weight: .regular)).foregroundColor(Color("income"))
+            Text("120,00$").font(.system(size: 20, weight: .regular)).foregroundColor(Color("expense"))
         }
         Spacer()
         Ellipse()
-            .frame(width: 120, height: 160)
+            .frame(width: 120, height: 140)
             .foregroundColor(.black)
-    }
+        
+    }.padding([.bottom], 24)
 }
 
 var transactionsComponent: some View {
@@ -74,14 +75,14 @@ struct TransactionSeparator: View {
         HStack {
             Rectangle()
                 .frame(width: 260, height: 2)
-                .foregroundColor(.black)
-            Spacer()
+                .foregroundColor(Color("text"))
             Text(title)
                 .font(.system(
                     size: 18,
                     weight: .regular
                 ))
-                .foregroundColor(.gray)
+                .foregroundColor(Color("textExtend"))
+            Spacer()
         }
     }
 }
@@ -100,11 +101,12 @@ struct TransactionElement: View, Identifiable {
         HStack {
             Rectangle()
                 .frame(width: 48, height: 48)
-                .foregroundColor(.black)
-            VStack {
-                Text("\(amount)$")
+                .cornerRadius(15)
+                .foregroundColor(Color("transactionBox"))
+            VStack(alignment: .leading) {
+                Text("\(amount)$").foregroundColor(Color("text"))
                 Text(category)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("textExtend"))
             }
             Spacer()
         }
@@ -122,7 +124,7 @@ let transactionCollection: [TransactionDay] = [
         uuid: "213-dssdf3",
         separator: TransactionSeparator.init(title: "Today", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gamdasdes"),
             TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
         ]
     ),
@@ -132,7 +134,7 @@ let transactionCollection: [TransactionDay] = [
         transactionsCollection: [
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gamsdases"),
             TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
         ]
     ),
@@ -142,7 +144,7 @@ let transactionCollection: [TransactionDay] = [
         transactionsCollection: [
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gadsadmes"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
             TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
