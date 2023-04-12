@@ -25,17 +25,17 @@ var headingComponent: some View {
 }
 
 var balanceComponent: some View {
-    HStack(alignment: .top) {
+    HStack(alignment: .center) {
         VStack(alignment: .leading, spacing: 10) {
             Text("172,20$")
-                .font(.system(size: 32, weight: .bold))
+                .font(.system(size: 38, weight: .bold))
                 .foregroundColor(Color("text"))
             VStack(spacing: 3) {
                 Text("363,20$")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color("income"))
                 Text("120,00$")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color("expense"))
             }
         }.padding()
@@ -46,23 +46,35 @@ var balanceComponent: some View {
 }
 
 struct transactionsChart: View {
-    var demoData: [Double] = [8, 2, 4, 5]
+    var demoData: [Double] = [8, 2, 4]
     
     var body: some View {
-        PieChart()
-            .data(demoData)
-            .chartStyle(
-                ChartStyle(
-                    backgroundColor: Color("background"),
-                    foregroundColor: [
-                        ColorGradient(.blue),
-                        ColorGradient(.red),
-                        ColorGradient(.green),
-                        ColorGradient(.orange)
-                    ]
-                )
-            )
-            .frame(width: 160, height: 160)
+        Button(action: {
+            // Todo
+        }) {
+            ZStack {
+                PieChart()
+                    .data(demoData)
+                    .chartStyle(
+                        ChartStyle(
+                            backgroundColor: Color("background"),
+                            foregroundColor: [
+                                ColorGradient(Color("ColorA")),
+                                ColorGradient(Color("ColorB")),
+                                ColorGradient(Color("ColorC")),
+                            ]
+                        )
+                    )
+                    .frame(width: 160, height: 160)
+                Circle()
+                    .frame(height: 120)
+                    .foregroundColor(Color("background"))
+                Image("iconSettings")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(Color("text"))
+            }
+        }
     }
 }
 
