@@ -13,7 +13,7 @@ struct ContentView: View {
         VStack {
             headingComponent
             transactionsComponent
-//            Spacer()
+            //            Spacer()
         }.padding([.leading, .trailing], 24) .background(Color("background"))
     }
 }
@@ -25,15 +25,20 @@ var headingComponent: some View {
 }
 
 var balanceComponent: some View {
-    HStack {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("172,20$").font(.system(size: 32, weight:
-                    .bold)).foregroundColor(Color("text"))
-            VStack(spacing: 3){
-                Text("363,20$").font(.system(size: 20, weight: .bold)).foregroundColor(Color("income"))
-                Text("120,00$").font(.system(size: 20, weight: .bold)).foregroundColor(Color("expense"))
+    HStack(alignment: .top) {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("172,20$")
+                .font(.system(size: 32, weight: .bold))
+                .foregroundColor(Color("text"))
+            VStack(spacing: 3) {
+                Text("363,20$")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color("income"))
+                Text("120,00$")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color("expense"))
             }
-        }
+        }.padding()
         Spacer()
         transactionsChart.init()
         
@@ -41,13 +46,22 @@ var balanceComponent: some View {
 }
 
 struct transactionsChart: View {
-    var demoData: [Double] = [8, 2, 4, 6, 12, 9, 2]
+    var demoData: [Double] = [8, 2, 4, 5]
     
     var body: some View {
-        BarChart()
+        PieChart()
             .data(demoData)
-            .chartStyle(ChartStyle(backgroundColor: .white,
-                                   foregroundColor: ColorGradient(.blue, .purple)))
+            .chartStyle(
+                ChartStyle(
+                    backgroundColor: Color("background"),
+                    foregroundColor: [
+                        ColorGradient(.blue),
+                        ColorGradient(.red),
+                        ColorGradient(.green),
+                        ColorGradient(.orange)
+                    ]
+                )
+            )
             .frame(width: 160, height: 160)
     }
 }
