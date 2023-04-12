@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct ContentView: View {
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                headingComponent
-                transactionsComponent
-                Spacer()
-            }.padding([.leading, .trailing], 24)
-        }.background(Color("background"))
+        VStack {
+            headingComponent
+            transactionsComponent
+//            Spacer()
+        }.padding([.leading, .trailing], 24) .background(Color("background"))
     }
 }
 
@@ -27,23 +26,38 @@ var headingComponent: some View {
 
 var balanceComponent: some View {
     HStack {
-        VStack(alignment: .leading) {
-            Text("172,20$").font(.system(size: 32, weight: .bold)).foregroundColor(Color("text"))
-            Text("363,20$").font(.system(size: 20, weight: .regular)).foregroundColor(Color("income"))
-            Text("120,00$").font(.system(size: 20, weight: .regular)).foregroundColor(Color("expense"))
+        VStack(alignment: .leading, spacing: 6) {
+            Text("172,20$").font(.system(size: 32, weight:
+                    .bold)).foregroundColor(Color("text"))
+            VStack(spacing: 3){
+                Text("363,20$").font(.system(size: 20, weight: .bold)).foregroundColor(Color("income"))
+                Text("120,00$").font(.system(size: 20, weight: .bold)).foregroundColor(Color("expense"))
+            }
         }
         Spacer()
-        Ellipse()
-            .frame(width: 120, height: 140)
-            .foregroundColor(.black)
+        transactionsChart.init()
         
     }.padding([.bottom], 24)
 }
 
+struct transactionsChart: View {
+    var demoData: [Double] = [8, 2, 4, 6, 12, 9, 2]
+    
+    var body: some View {
+        BarChart()
+            .data(demoData)
+            .chartStyle(ChartStyle(backgroundColor: .white,
+                                   foregroundColor: ColorGradient(.blue, .purple)))
+            .frame(width: 160, height: 160)
+    }
+}
+
 var transactionsComponent: some View {
-    VStack {
-        ForEach(transactionCollection) { transactionDay in
-            transactionDay
+    ScrollView(.vertical, showsIndicators: false) {
+        VStack {
+            ForEach(transactionCollection) { transactionDay in
+                transactionDay
+            }
         }
     }
 }
@@ -93,16 +107,21 @@ struct TransactionElement: View, Identifiable {
     }
     
     let uuid: String
-    //    let icon: Image
+    let icon: String
     let amount: String
     let category: String
     
     var body: some View {
         HStack {
-            Rectangle()
-                .frame(width: 48, height: 48)
-                .cornerRadius(15)
-                .foregroundColor(Color("transactionBox"))
+            ZStack(alignment: .center) {
+                Rectangle()
+                    .frame(width: 48, height: 48)
+                    .cornerRadius(15)
+                    .foregroundColor(Color("transactionBox"))
+                Text(icon)
+                    .font(.system(size: 28))
+            }
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text(category)
                     .foregroundColor(Color("textExtend"))
@@ -119,7 +138,7 @@ struct TransactionElement: View, Identifiable {
             }
             Spacer()
             Text("\(amount)$").foregroundColor(Color("text")).font(.system(
-                size: 18,
+                size: 20,
                 weight: .bold
             ))
         }
@@ -137,31 +156,31 @@ let transactionCollection: [TransactionDay] = [
         uuid: "213-dssdf3",
         separator: TransactionSeparator.init(title: "Today", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gamdasdes"),
-            TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gamdasdes"),
+            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
         ]
     ),
     .init(
         uuid: "213-3oif3",
         separator: TransactionSeparator.init(title: "04 April", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gamsdases"),
-            TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gamsdases"),
+            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
         ]
     ),
     .init(
         uuid: "213-3oi3",
         separator: TransactionSeparator.init(title: "03 April", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Gadsadmes"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-ds23", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gadsadmes"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
+            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
         ]
     )
 ]
