@@ -13,8 +13,9 @@ struct ContentView: View {
         VStack {
             headingComponent
             transactionsComponent
-            //            Spacer()
-        }.padding([.leading, .trailing], 24) .background(Color("background"))
+        }
+        .padding([.leading, .trailing, .top], 24)
+        .background(Color("background"))
     }
 }
 
@@ -27,9 +28,11 @@ var headingComponent: some View {
 var balanceComponent: some View {
     HStack(alignment: .center) {
         VStack(alignment: .leading, spacing: 10) {
-            Text("172,20$")
-                .font(.system(size: 38, weight: .bold))
+            Text("4590,20$")
+                .font(.system(size: 34, weight: .bold))
                 .foregroundColor(Color("text"))
+            
+            
             VStack(spacing: 3) {
                 Text("363,20$")
                     .font(.system(size: 24, weight: .bold))
@@ -38,10 +41,9 @@ var balanceComponent: some View {
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color("expense"))
             }
-        }.padding()
+        }
         Spacer()
         transactionsChart.init()
-        
     }.padding([.bottom], 24)
 }
 
@@ -121,7 +123,8 @@ struct TransactionSeparator: View {
                 .foregroundColor(Color("textExtend"))
             Spacer()
             Rectangle()
-                .frame(width: 260, height: 2)
+                .padding([.leading], 10)
+                .frame(width: .infinity, height: 2)
                 .foregroundColor(Color("text"))
         }
     }
@@ -136,6 +139,7 @@ struct TransactionElement: View, Identifiable {
     let icon: String
     let amount: String
     let category: String
+    let type: String
     
     var body: some View {
         HStack {
@@ -163,10 +167,10 @@ struct TransactionElement: View, Identifiable {
                 }
             }
             Spacer()
-            Text("\(amount)$").foregroundColor(Color("text")).font(.system(
-                size: 20,
-                weight: .bold
-            ))
+            Text("\(amount)$")
+                .foregroundColor(Color("text"))
+                .font(.system(size: 20,weight: .bold))
+            Image(type)
         }
     }
 }
@@ -182,31 +186,31 @@ let transactionCollection: [TransactionDay] = [
         uuid: "213-dssdf3",
         separator: TransactionSeparator.init(title: "Today", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gamdasdes"),
-            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "1", icon: "🥃", amount: "18,50", category: "Bar", type: "expense"),
+            TransactionElement.init(uuid: "2", icon: "✈️", amount: "250,00", category: "Travel", type: "expense")
         ]
     ),
     .init(
         uuid: "213-3oif3",
         separator: TransactionSeparator.init(title: "04 April", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gamsdases"),
-            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "3", icon: "🛒", amount: "48,93", category: "Supermarket", type: "expense"),
+            TransactionElement.init(uuid: "4", icon: "🎮", amount: "50,00", category: "Game", type: "expense"),
+            TransactionElement.init(uuid: "5", icon: "🍽️", amount: "127,40", category: "Restaurant", type: "expense"),
+            TransactionElement.init(uuid: "6", icon: "💸", amount: "2000,00", category: "Innova SPA", type: "income")
         ]
     ),
     .init(
         uuid: "213-3oi3",
         separator: TransactionSeparator.init(title: "03 April", theme: "Good"),
         transactionsCollection: [
-            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Gadsadmes"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "🥃", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-dsf3", icon: "✈️", amount: "24,56", category: "Games"),
-            TransactionElement.init(uuid: "213-ds23", icon: "✈️", amount: "24,56", category: "Games")
+            TransactionElement.init(uuid: "6", icon: "🛍️", amount: "99,99", category: "Shopping", type: "expense"),
+            TransactionElement.init(uuid: "7", icon: "🚕", amount: "25,00", category: "Transportation", type: "expense"),
+            TransactionElement.init(uuid: "8", icon: "🏥", amount: "350,00", category: "Medical", type: "expense"),
+            TransactionElement.init(uuid: "9", icon: "🏠", amount: "1200,00", category: "Housing", type: "expense"),
+            TransactionElement.init(uuid: "10", icon: "💻", amount: "899,00", category: "Technology", type: "expense"),
+            TransactionElement.init(uuid: "11", icon: "📚", amount: "30,00", category: "Education", type: "expense"),
+            TransactionElement.init(uuid: "12", icon: "🎁", amount: "50,00", category: "Gifts", type: "expense")
         ]
     )
 ]
