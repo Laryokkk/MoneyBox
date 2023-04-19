@@ -20,6 +20,7 @@
 		10B15EB329E5BBFB0034B006 /* MoneyBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B15EB229E5BBFB0034B006 /* MoneyBoxTests.swift */; };
 		10B15EBD29E5BBFB0034B006 /* MoneyBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B15EBC29E5BBFB0034B006 /* MoneyBoxUITests.swift */; };
 		10B15EBF29E5BBFB0034B006 /* MoneyBoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B15EBE29E5BBFB0034B006 /* MoneyBoxUITestsLaunchTests.swift */; };
+		10B2F93C29EFBDE30032934E /* AddTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B2F93B29EFBDE30032934E /* AddTransaction.swift */; };
 		10C36DE729E6A4D600B4C2B0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 10C36DE629E6A4D600B4C2B0 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		10B15EB829E5BBFB0034B006 /* MoneyBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B15EBC29E5BBFB0034B006 /* MoneyBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBoxUITests.swift; sourceTree = "<group>"; };
 		10B15EBE29E5BBFB0034B006 /* MoneyBoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		10B2F93B29EFBDE30032934E /* AddTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				101F49CC29EE9D6600428F46 /* Heading.swift */,
 				10A4036B29EF47EC005D144C /* Balance.swift */,
+				10B2F93B29EFBDE30032934E /* AddTransaction.swift */,
 			);
 			path = Heading;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A4037329EF4A20005D144C /* Transaction.swift in Sources */,
+				10B2F93C29EFBDE30032934E /* AddTransaction.swift in Sources */,
 				10A4036F29EF4976005D144C /* Transactions.swift in Sources */,
 				101F49CD29EE9D6600428F46 /* Heading.swift in Sources */,
 				10A4037529EF4A51005D144C /* Group.swift in Sources */,

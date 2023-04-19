@@ -13,8 +13,11 @@ public struct Heading: View {
     let expense: String = "1000"
     
     public var body: some View {
-        VStack {
-            Balance.init(balance: balance, income: income, expense: expense)
-        }.padding([.leading, .trailing])
+//        ScrollView (.horizontal, showsIndicators: false) {
+            HStack {
+//                Balance.init(balance: balance, income: income, expense: expense)
+                AddTransaction.init()
+            }.padding([.leading, .trailing])
+//        }
     }
 }
