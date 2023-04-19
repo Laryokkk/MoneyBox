@@ -23,48 +23,61 @@ private struct inputData: View {
     @State private var date: Date = Date()
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .cornerRadius(15)
-                .foregroundColor(Color("backgroundExtend"))
-            VStack {
-                HStack {
-                    Button(action: {}){
-                        ZStack {
-                            Rectangle()
-                                .cornerRadius(15)
-                                .frame(width: 48, height: 48)
-                                .foregroundColor(Color("transactionBox"))
-                            Image("iconPlus")
-                        }
+        VStack (spacing: 15) {
+            HStack (spacing: 15) {
+                Button(action: {}){
+                    ZStack {
+                        Rectangle()
+                        .cornerRadius(15)
+                        .frame(width: 48, height: 48)
+                        .foregroundColor(Color("transactionBox"))
+                        
+                        Image("iconPlus")
                     }
-                    
-                    TextField(
-                        "Amount",
-                        text: $spend
-                    )
-                    .padding(10)
-                    .background(Color("transactionBox"))
-                    .cornerRadius(5)
-                    
                 }
                 
                 TextField(
-                    "Name",
-                    text: $name
+                    "Amount",
+                    text: $spend
                 )
                 .padding(10)
                 .background(Color("transactionBox"))
                 .cornerRadius(5)
                 
-                TextField(
-                    "Spend",
-                    text: $section
-                )
-                .padding(10)
-                .background(Color("transactionBox"))
-                .cornerRadius(5)
-            }.padding()
+            }
+            
+            TextField(
+                "Name",
+                text: $name
+            )
+            .padding(10)
+            .background(Color("transactionBox"))
+            .cornerRadius(5)
+            
+            TextField(
+                "Section",
+                text: $section
+            )
+            .padding(10)
+            .background(Color("transactionBox"))
+            .cornerRadius(5)
+            
+            button.init()
         }
+        .padding()
+        .background(Color("backgroundExtend"))
+        .cornerRadius(15)
+    }
+}
+
+private struct button: View {
+    var body: some View {
+        Button(action: {}) {
+            Text("Add Expense")
+        }
+        .frame(maxWidth: .infinity, maxHeight: 50)
+        .background(Color("transactionBox"))
+        .cornerRadius(15)
+        .padding([.top], 20)
     }
 }

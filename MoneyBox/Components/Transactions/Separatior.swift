@@ -21,8 +21,10 @@ public struct Separator: View {
             Spacer()
             Rectangle()
                 .padding([.leading], 10)
-                .frame(width: .infinity, height: 2)
+                .frame(height: 2)
                 .foregroundColor(Color("text"))
         }
+        .padding([.top, .bottom], 10)
+        .background(Color("background"))
     }
 }

@@ -34,8 +34,6 @@ public struct Balance: View {
             Spacer()
             chart.init()
         }
-            .padding([.top], 30)
-            .padding([.bottom], 36)
     }
 }
 

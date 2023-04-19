@@ -8,11 +8,8 @@
 import SwiftUI
 
 public struct Transaction: View, Identifiable {
-    public var id: String {
-        uuid
-    }
+    public let id = UUID()
     
-    let uuid: String
     let icon: String
     let amount: String
     let category: String

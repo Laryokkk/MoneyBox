@@ -8,17 +8,13 @@
 import SwiftUI
 
 public struct Group: View, Identifiable {
-    public var id: String {
-        uuid
-    }
+    public let id = UUID()
     
-    let uuid: String
     let separator: Separator
     let transactionsCollection: [Transaction]
     
     public var body: some View {
-        VStack {
-            separator
+        Section (header: separator) {
             ForEach(transactionsCollection) { transaction in
                 transaction
             }
