@@ -14,7 +14,7 @@ public struct Separator: View {
         HStack {
             Text(title)
                 .font(.system(
-                    size: 18,
+                    size: 14,
                     weight: .regular
                 ))
                 .foregroundColor(Color("textExtend"))

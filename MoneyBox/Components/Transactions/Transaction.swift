@@ -29,16 +29,16 @@ public struct Transaction: View, Identifiable {
             VStack(alignment: .leading, spacing: 4) {
                 Text(category)
                     .foregroundColor(Color("textExtend"))
-                HStack {
-                    ZStack{
-                        Circle().frame(width: 14)
-                        Circle().frame(width: 6).foregroundColor(Color("background"))
-                    }
-                    ZStack{
-                        Circle().frame(width: 14)
-                        Circle().frame(width: 6).foregroundColor(Color("background"))
-                    }
-                }
+//                HStack {
+//                    ZStack{
+//                        Circle().frame(width: 14)
+//                        Circle().frame(width: 6).foregroundColor(Color("background"))
+//                    }
+//                    ZStack{
+//                        Circle().frame(width: 14)
+//                        Circle().frame(width: 6).foregroundColor(Color("background"))
+//                    }
+//                }
             }
             Spacer()
             Text("\(amount)$")

@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct Transactions: View {
+    @State private var toggleButtons = false;
+    
+    @AppStorage("balance", store: .standard) var balance = 0
+    @AppStorage("income", store: .standard) var income = 0
+    @AppStorage("expense", store: .standard) var expense = 0
+    
     var body: some View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -17,14 +23,21 @@ struct Transactions: View {
                     }
                 }
             }
-            .padding([.leading, .trailing])
+                .padding([.leading, .trailing])
+                .simultaneousGesture(
+                    DragGesture().onChanged ({
+                        toggleButtons = !($0.translation.height > 0)
+                    })
+                )
+            
             
             VStack {
                 Spacer()
                 
                 HStack() {
                     Button("Income") {
-                        
+                        income += 100
+                        balance = (income - expense)
                     }
                     .font(.system(size: 16, weight: .semibold))
                     .padding(18)
@@ -36,7 +49,8 @@ struct Transactions: View {
                     Spacer()
                     
                     Button("Expense") {
-                        
+                        expense += 100
+                        balance = (income - expense)
                     }
                     .font(.system(size: 16, weight: .semibold))
                     .padding(18)
@@ -45,7 +59,10 @@ struct Transactions: View {
                     .foregroundColor(.white)
                     .cornerRadius(18)
                 }
-            }.padding([.leading, .trailing])
+            }
+                .padding([.leading, .trailing])
+                .opacity(toggleButtons ? 0.0 : 1.0)
+                .animation(.easeInOut(duration: 0.2), value: toggleButtons)
         }
     }
 }
