@@ -23,7 +23,7 @@ public struct Transaction: View, Identifiable {
                     .cornerRadius(15)
                     .foregroundColor(Color("transactionBox"))
                 Text(icon)
-                    .font(.system(size: 28))
+                    .font(.system(size: 26))
             }
             
             VStack(alignment: .leading, spacing: 4) {
@@ -43,7 +43,7 @@ public struct Transaction: View, Identifiable {
             Spacer()
             Text("\(amount)$")
                 .foregroundColor(Color("text"))
-                .font(.system(size: 20,weight: .bold))
+                .font(.system(size: 18,weight: .bold))
             Image(type)
         }
     }

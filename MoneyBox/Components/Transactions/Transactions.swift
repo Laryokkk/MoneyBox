@@ -26,7 +26,7 @@ struct Transactions: View {
                     Button("Income") {
                         
                     }
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                     .padding(18)
                     .padding([.leading, .trailing])
                     .background(Color("income"))
@@ -38,7 +38,7 @@ struct Transactions: View {
                     Button("Expense") {
                         
                     }
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                     .padding(18)
                     .padding([.leading, .trailing])
                     .background(Color("expense"))
