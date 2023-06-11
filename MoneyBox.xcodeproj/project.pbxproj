@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		101F49CD29EE9D6600428F46 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F49CC29EE9D6600428F46 /* Heading.swift */; };
+		10A1C5482A362F7C00C096EB /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1C5472A362F7C00C096EB /* TransactionStore.swift */; };
 		10A4036C29EF47EC005D144C /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4036B29EF47EC005D144C /* Balance.swift */; };
 		10A4036F29EF4976005D144C /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4036E29EF4976005D144C /* Transactions.swift */; };
 		10A4037129EF49D1005D144C /* Separatior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4037029EF49D1005D144C /* Separatior.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		101F49CC29EE9D6600428F46 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
+		10A1C5472A362F7C00C096EB /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		10A4036B29EF47EC005D144C /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		10A4036E29EF4976005D144C /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
 		10A4037029EF49D1005D144C /* Separatior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separatior.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		10A1C5492A362F8C00C096EB /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				10A1C5472A362F7C00C096EB /* TransactionStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		10A4036A29EF47CA005D144C /* Heading */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 		10B15EA029E5BBFA0034B006 /* MoneyBox */ = {
 			isa = PBXGroup;
 			children = (
+				10A1C5492A362F8C00C096EB /* Storage */,
 				101F49C929EE9C5300428F46 /* Components */,
 				10B15EA129E5BBFA0034B006 /* MoneyBoxApp.swift */,
 				10B15EA329E5BBFA0034B006 /* ContentView.swift */,
@@ -321,6 +332,7 @@
 				10A4037529EF4A51005D144C /* Group.swift in Sources */,
 				10A4036C29EF47EC005D144C /* Balance.swift in Sources */,
 				10B15EA429E5BBFA0034B006 /* ContentView.swift in Sources */,
+				10A1C5482A362F7C00C096EB /* TransactionStore.swift in Sources */,
 				10B15EA229E5BBFA0034B006 /* MoneyBoxApp.swift in Sources */,
 				10A4037129EF49D1005D144C /* Separatior.swift in Sources */,
 			);
