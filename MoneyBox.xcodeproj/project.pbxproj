@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1018B38A2A3A4783007F571A /* ViewAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018B3892A3A4783007F571A /* ViewAmount.swift */; };
 		101F49CD29EE9D6600428F46 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F49CC29EE9D6600428F46 /* Heading.swift */; };
 		10A1C5482A362F7C00C096EB /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1C5472A362F7C00C096EB /* TransactionStore.swift */; };
 		10A4036C29EF47EC005D144C /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4036B29EF47EC005D144C /* Balance.swift */; };
 		10A4036F29EF4976005D144C /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4036E29EF4976005D144C /* Transactions.swift */; };
-		10A4037129EF49D1005D144C /* Separatior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4037029EF49D1005D144C /* Separatior.swift */; };
-		10A4037329EF4A20005D144C /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4037229EF4A20005D144C /* Transaction.swift */; };
-		10A4037529EF4A51005D144C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4037429EF4A51005D144C /* Group.swift */; };
 		10B15EA229E5BBFA0034B006 /* MoneyBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B15EA129E5BBFA0034B006 /* MoneyBoxApp.swift */; };
 		10B15EA429E5BBFA0034B006 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B15EA329E5BBFA0034B006 /* ContentView.swift */; };
 		10B15EA629E5BBFB0034B006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B15EA529E5BBFB0034B006 /* Assets.xcassets */; };
@@ -42,13 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1018B3892A3A4783007F571A /* ViewAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAmount.swift; sourceTree = "<group>"; };
 		101F49CC29EE9D6600428F46 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
 		10A1C5472A362F7C00C096EB /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		10A4036B29EF47EC005D144C /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		10A4036E29EF4976005D144C /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
-		10A4037029EF49D1005D144C /* Separatior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separatior.swift; sourceTree = "<group>"; };
-		10A4037229EF4A20005D144C /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		10A4037429EF4A51005D144C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		10B15E9E29E5BBFA0034B006 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B15EA129E5BBFA0034B006 /* MoneyBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBoxApp.swift; sourceTree = "<group>"; };
 		10B15EA329E5BBFA0034B006 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1018B3882A3A4771007F571A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				1018B3892A3A4783007F571A /* ViewAmount.swift */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		101F49C929EE9C5300428F46 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +120,8 @@
 		10A4036D29EF4954005D144C /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				1018B3882A3A4771007F571A /* lib */,
 				10A4036E29EF4976005D144C /* Transactions.swift */,
-				10A4037029EF49D1005D144C /* Separatior.swift */,
-				10A4037229EF4A20005D144C /* Transaction.swift */,
-				10A4037429EF4A51005D144C /* Group.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -326,15 +328,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10A4037329EF4A20005D144C /* Transaction.swift in Sources */,
 				10A4036F29EF4976005D144C /* Transactions.swift in Sources */,
+				1018B38A2A3A4783007F571A /* ViewAmount.swift in Sources */,
 				101F49CD29EE9D6600428F46 /* Heading.swift in Sources */,
-				10A4037529EF4A51005D144C /* Group.swift in Sources */,
 				10A4036C29EF47EC005D144C /* Balance.swift in Sources */,
 				10B15EA429E5BBFA0034B006 /* ContentView.swift in Sources */,
 				10A1C5482A362F7C00C096EB /* TransactionStore.swift in Sources */,
 				10B15EA229E5BBFA0034B006 /* MoneyBoxApp.swift in Sources */,
-				10A4037129EF49D1005D144C /* Separatior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,8 +548,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BLR7UFH7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
@@ -567,8 +569,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BLR7UFH7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
@@ -587,6 +591,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BLR7UFH7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BoxStudio.MoneyBoxUITests;
@@ -604,6 +609,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BLR7UFH7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BoxStudio.MoneyBoxUITests;

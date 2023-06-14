@@ -10,19 +10,45 @@ class TransactionStore {
     }
 
     func getTransactionComponents() -> [Group] {
-        var data: [Group] = []
+        var transactionList: [TransactionStd] = []
         
         for transaction in self.transactions {
-            data.append(
-                Group.init(
-                    separator: Separator(title: transaction[4]),
-                    transactionsCollection: [
-                        Transaction(icon: transaction[1], amount: transaction[2], category: transaction[3], type: transaction[0])
-                    ]
+            transactionList.append(
+                TransactionStd(
+                    type: transaction[0],
+                    icon: transaction[1],
+                    amount: transaction[2],
+                    category: transaction[3],
+                    date: transaction[4]
                 )
             )
         }
         
+        var groupedTransactions: [String: [TransactionStd]] = [:]
+
+        for transaction in transactionList {
+            if let date = transaction.date {
+                if groupedTransactions[date] != nil {
+                    groupedTransactions[date]?.append(transaction)
+                } else {
+                    groupedTransactions[date] = [transaction]
+                }
+            }
+        }
+
+        let groupedArray: [[TransactionStd]] = groupedTransactions.values.map { $0 }
+
+        var data: [Group] = []
+        
+        for group in groupedArray {
+            data.append(Group.init(
+                separator: Separator(title: group[0].date!),
+                transactionsCollection: group.map { tr in
+                    Transaction(icon: tr.icon ?? "", amount: tr.amount ?? "", category: tr.category ?? "", type: tr.type ?? "")
+                }
+            ))
+        }
+
         return data
     }
 }
@@ -34,20 +60,12 @@ class TransactionStd {
     var category: String?
     var date: String?
     
-    init(type: String?, icon: String?, amount: String?, category: String?, date: Date?) {
+    init(type: String?, icon: String?, amount: String?, category: String?, date: String?) {
         self.type = type
         self.icon = icon
         self.amount = amount
         self.category = category
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        
-        if let date = date {
-            self.date = formatter.string(from: date)
-        } else {
-            self.date = nil
-        }
+        self.date = date
     }
 
     

@@ -8,7 +8,6 @@
 import SwiftUI
 
 let store = TransactionStore()
-var trans: [Group] = store.getTransactionComponents()
 
 struct Transactions: View {
     @State private var toggleButtons = false
@@ -26,17 +25,16 @@ struct Transactions: View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
-                    ForEach(trans) { transactionDay in
+                    ForEach(store.getTransactionComponents()) { transactionDay in
                         transactionDay
                     }
                 }
             }
-            .padding([.leading, .trailing])
-            .simultaneousGesture(
-                DragGesture().onChanged ({
-                    toggleButtons = !($0.translation.height > 0)
-                })
-            )
+                .padding([.leading, .trailing])
+                .simultaneousGesture( DragGesture().onChanged ({
+                        toggleButtons = !($0.translation.height > 0)
+                    })
+                )
             
             
             VStack {
@@ -54,12 +52,8 @@ struct Transactions: View {
                     .background(Color("income"))
                     .foregroundColor(.white)
                     .cornerRadius(18)
-                    .sheet(isPresented: $shouldPresentIncomeSheet) {
-                        print("Sheet dismissed!")
-                    } content: {
-                        AddIncomeView()
-                            .presentationDetents([.fraction(0.42)])
-                    }
+                    .sheet(isPresented: $shouldPresentIncomeSheet) { }
+                        content: {ViewAmount(type: "income").presentationDetents([.fraction(0.42)])}
                     
                     
                     Spacer()
@@ -75,144 +69,93 @@ struct Transactions: View {
                     .background(Color("expense"))
                     .foregroundColor(.white)
                     .cornerRadius(18)
-                    .sheet(isPresented: $shouldPresentExpenseSheet) {
-                        print("Sheet dismissed!")
-                    } content: {
-                        AddExpenseView()
-                            .presentationDetents([.fraction(0.42)])
-                    }
+                    .sheet(isPresented: $shouldPresentExpenseSheet) { }
+                        content: {ViewAmount(type: "expense").presentationDetents([.fraction(0.42)])}
                 }
             }
-                .padding([.leading, .trailing])
-                .opacity(toggleButtons ? 0.0 : 1.0)
-                .animation(.easeInOut(duration: 0.2), value: toggleButtons)
+            .padding([.leading, .trailing])
+            .opacity(toggleButtons ? 0.0 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: toggleButtons)
         }
     }
 }
 
-struct AddIncomeView: View {
-    @Environment(\.dismiss) private var dismiss
+struct Separator: View {
+    let title: String
     
-    @State private var icon = "🛒"
-    @State private var amount = ""
-    @State private var title = ""
-    @State private var date = Date()
-
-    var body: some View {
-        VStack (spacing: 14) {
-            HStack {
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .frame(width: 56, height: 56)
-                        .cornerRadius(15)
-                        .foregroundColor(Color("transactionBox"))
-                    Text("🛒")
-                        .font(.system(size: 26))
-                }
-                
-                Spacer(minLength: 20)
-                
-                DatePicker("", selection: $date)
-                    .textInputAutocapitalization(.sentences)
-                    .disableAutocorrection(true)
-                    .labelsHidden()
-            }
-            
-            TextField("Title", text: $title)
-                .padding(12)
-                .background(Color("transactionBox"))
-                .cornerRadius(10)
-                .textInputAutocapitalization(.sentences)
-                .disableAutocorrection(true)
-            
-            TextField("Amount", text: $amount)
-                .padding(12)
-                .background(Color("transactionBox"))
-                .cornerRadius(10)
-                .textInputAutocapitalization(.sentences)
-                .disableAutocorrection(true)
-            
+    public var body: some View {
+        HStack {
+            Text(title)
+                .font(.system(
+                    size: 14,
+                    weight: .regular
+                ))
+                .foregroundColor(Color("textExtend"))
             Spacer()
-            
-            Button("Add") {
-                let transaction = TransactionStd(type: "income", icon: icon, amount: amount, category: title, date: date)
-                store.appendTransaction(transaction: transaction)
-                trans = store.getTransactionComponents()
-                
-                dismiss()
-            }
-            .frame(maxWidth: .infinity)
-                .font(.system(size: 16, weight: .semibold))
-                .padding(18)
-                .padding([.leading, .trailing])
-                .background(Color("income"))
-                .foregroundColor(.white)
-                .cornerRadius(18)
+            Rectangle()
+                .padding([.leading], 10)
+                .frame(height: 2)
+                .foregroundColor(Color("text"))
         }
-        .padding([.leading, .top, .trailing])
+        .padding([.top, .bottom], 10)
+        .background(Color("background"))
     }
 }
 
-struct AddExpenseView: View {
-    @Environment(\.dismiss) private var dismiss
+struct Transaction: View, Identifiable {
+    public let id = UUID()
     
-    @State private var icon = "🛒"
-    @State private var amount = ""
-    @State private var title = ""
-    @State private var date = Date()
-
-    var body: some View {
-        VStack (spacing: 14) {
-            HStack {
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .frame(width: 56, height: 56)
-                        .cornerRadius(15)
-                        .foregroundColor(Color("transactionBox"))
-                    Text(icon)
-                        .font(.system(size: 26))
-                }
-                
-                Spacer(minLength: 20)
-                
-                DatePicker("", selection: $date)
-                    .textInputAutocapitalization(.sentences)
-                    .disableAutocorrection(true)
-                    .labelsHidden()
+    let icon: String
+    let amount: String
+    let category: String
+    let type: String
+    
+    public var body: some View {
+        HStack {
+            ZStack(alignment: .center) {
+                Rectangle()
+                    .frame(width: 48, height: 48)
+                    .cornerRadius(15)
+                    .foregroundColor(Color("transactionBox"))
+                Text(icon)
+                    .font(.system(size: 26))
             }
             
-            TextField("Title", text: $title)
-                .padding(12)
-                .background(Color("transactionBox"))
-                .cornerRadius(10)
-                .textInputAutocapitalization(.sentences)
-                .disableAutocorrection(true)
-            
-            TextField("Amount", text: $amount)
-                .padding(12)
-                .background(Color("transactionBox"))
-                .cornerRadius(10)
-                .textInputAutocapitalization(.sentences)
-                .disableAutocorrection(true)
-            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(category)
+                    .foregroundColor(Color("textExtend"))
+                //                HStack {
+                //                    ZStack{
+                //                        Circle().frame(width: 14)
+                //                        Circle().frame(width: 6).foregroundColor(Color("background"))
+                //                    }
+                //                    ZStack{
+                //                        Circle().frame(width: 14)
+                //                        Circle().frame(width: 6).foregroundColor(Color("background"))
+                //                    }
+                //                }
+            }
             Spacer()
-            
-            Button("Add") {
-                let transaction = TransactionStd(type: "expense", icon: icon, amount: amount, category: title, date: date)
-                store.appendTransaction(transaction: transaction)
-                trans = store.getTransactionComponents()
-                
-                dismiss()
-            }
-            .frame(maxWidth: .infinity)
-                .font(.system(size: 16, weight: .semibold))
-                .padding(18)
-                .padding([.leading, .trailing])
-                .background(Color("expense"))
-                .foregroundColor(.white)
-                .cornerRadius(18)
+            Text("\(amount)$")
+                .foregroundColor(Color("text"))
+                .font(.system(size: 18,weight: .bold))
+            Image(type)
         }
-        .padding([.leading, .top, .trailing])
+    }
+}
+
+struct Group: View, Identifiable {
+    public let id = UUID()
+    
+    let separator: Separator
+    let transactionsCollection: [Transaction]
+    
+    public var body: some View {
+        Section (header: separator) {
+            ForEach(transactionsCollection) { transaction in
+                transaction
+            }
+        }
     }
 }
 
